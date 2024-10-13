@@ -2,7 +2,6 @@ import { Sequelize } from "sequelize-typescript";
 import { Tarea } from "./models/tareas";
 import dotenv from "dotenv";
 
-// Cargar variables de entorno
 dotenv.config();
 
 export const sequelize = new Sequelize({
@@ -14,4 +13,13 @@ export const sequelize = new Sequelize({
     models: [Tarea]
 });
 
-// Resto del código de dbConnection...
+export const dbConnection = async () =>{
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+        await sequelize.sync({force: true});
+        console.log('Database synchronized');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
