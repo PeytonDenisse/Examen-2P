@@ -3,7 +3,7 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
 @Table({
     tableName: "Tarea"
 })
-export class Todo extends Model {
+export class Tarea extends Model {
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,
