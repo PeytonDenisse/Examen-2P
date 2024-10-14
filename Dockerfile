@@ -1,24 +1,23 @@
-#imagen base
+# Dockerfile
 FROM node:alpine
 
-#ir al directorio donde va a vivir mi aplicacion 
+# Establecer el directorio de trabajo
 WORKDIR /app
 
-#copiar el package.json
+# Copiar el package.json y package-lock.json
 COPY package*.json ./
 
-#instalar las dependencias
+# Instalar las dependencias
 RUN npm install
 
-#copiar el package.json los archivos de mi local al contenedor 
+# Copiar el resto del código de la aplicación
 COPY . .
 
-#instalar las dependencias
-RUN  npm run build
+# Construir el proyecto
+RUN npm run build
 
-#comando de inicio de contenedor 
-CMD ["node","dist/src/index.js"]
+# Exponer el puerto 3000
+EXPOSE 3000
 
-
-
-
+# Comando para iniciar la aplicación
+CMD ["npm", "start"]

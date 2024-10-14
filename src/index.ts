@@ -3,7 +3,7 @@ import { dbConnection } from './database';
 import routes from './routes/routes'
 
 const app = express();
-app.use(express.json);
+app.use(express.json());
 
 //conexion con la base de datos 
 dbConnection();
